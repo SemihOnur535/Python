@@ -1,0 +1,73 @@
+import random
+
+puan = 0
+#Başlangıç Menüsü
+print("Aritmatik Oyununa Hoş Geldiniz!\n===========================================")
+while (True):
+    m = int(input("Sayı Aralığını Belirleyin En Az 5 :"))
+    if ((m < 5)):
+        print("Lütfen 5'den büyük bir sayı giriniz.\n")
+    else:
+        break
+
+#Rasggele Olarak Seçilen Değişkenler 
+while (True):
+    #Sayılar Buradaki m Başlangıç ekranında belirtilen maksimum sayı'dır 
+    o = random.randint(1, m)
+    o2 = random.randint(1, m)
+    #4 İşlem
+    hsp = random.randint(1, 4)
+  
+    if ((hsp == 4)):
+        ist = "+"
+    elif ((hsp == 3)):
+        ist = "-"
+    elif ((hsp == 2)):
+        ist = "/"
+    elif ((hsp == 1)):
+        ist = "*"
+
+    if ((hsp == 4)):
+        dog = (o + o2)
+    elif ((hsp == 3)):
+        dog = (o - o2)
+    elif ((hsp == 2)):
+        dog = (o // o2)
+    elif ((hsp == 1)):
+        dog = (o * o2) 
+
+    #Bölme İşlemlerinde bölünen bölen'den küçük olmasını engeller 
+    if ((hsp == 2) and (o < o2)):
+        print("[Soru]>>", o2, ist, o)
+        dog2 = (o2 / o)
+        cvp = float(input("Cevap :"))
+        if ((cvp == dog2)):
+            print("Doğru Bildin!")
+            puan = (puan + 5)
+            print("Puanınız :", puan, "\n===============\n")
+
+        elif ((cvp != float)):
+            if ((cvp == "Kapat") or (cvp == "kapat")):
+                input("'Enter'a basınız....")
+            else:
+                input("Hatalı!")
+        
+        else:
+            print("Yanlış Bildin -2 Puan.")
+            print("Doğru Cevap:", dog2, "\n===============\n")
+            puan = (puan - 2)
+            
+            
+        pass
+    
+    else:
+        print("[Soru]>>", o, ist, o2)
+        cvp = float(input("Cevap :"))
+        if ((cvp == dog)):
+            print("Doğru Bildin!")
+            puan = (puan + 5)
+            print("Paunınız :", puan, "\n===============\n")
+        else:
+            print("Yanlış Bildin -2 Puan.\nDoğru Cevap :", dog, "\n===============\n")
+            puan = (puan - 2)
+
